@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Inventory extends Component {
   render() {
@@ -6,7 +6,7 @@ class Inventory extends Component {
       <div>
         <p>Inventory</p>
       </div>
-    );
+      );
   }
 }
 

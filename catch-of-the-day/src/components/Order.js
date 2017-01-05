@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Order extends Component {
   render() {
@@ -6,7 +6,7 @@ class Order extends Component {
       <div>
         <p>Order</p>
       </div>
-    );
+      );
   }
 }
 
