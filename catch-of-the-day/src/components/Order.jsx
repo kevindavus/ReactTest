@@ -15,7 +15,7 @@ class Order extends Component {
     if (!fish || fish.status === 'unavailable') {
       return <li key={key}>Sorry, {fish
           ? fish.name
-          : 'fish'}
+          : 'this fish '}
         is no longer available!</li>
     }
 
