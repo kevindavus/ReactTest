@@ -22,6 +22,18 @@ class App extends Component {
       .addToOrder
       .bind(this)
 
+    this.removeFromOrder = this
+      .removeFromOrder
+      .bind(this)
+
+    this.updateFish = this
+      .updateFish
+      .bind(this)
+
+    this.removeFish = this
+      .removeFish
+      .bind(this)
+
     this.state = {
       fishes: {},
       order: {}
@@ -61,6 +73,22 @@ class App extends Component {
     this.setState({fishes});
   }
 
+  updateFish(key, updatedFish) {
+    const fishes = {
+      ...this.state.fishes
+    };
+    fishes[key] = updatedFish;
+    this.setState({fishes});
+  }
+
+  removeFish(key) {
+    const fishes = {
+      ...this.state.fishes
+    }
+    fishes[key] = null;
+    this.setState({fishes})
+  }
+
   loadSamples() {
     this.setState({fishes: sampleFishes});
   }
@@ -74,6 +102,18 @@ class App extends Component {
     order[key] = order[key] + 1 || 1;
     //update state
     this.setState({order})
+  }
+
+  removeFromOrder(key) {
+    const order = {
+      ...this.state.order
+    };
+    if (order[key] > 1 && this.state.fishes[key]) {
+      order[key]--;
+    } else {
+      delete order[key];
+    }
+    this.setState({order});
   }
 
   render() {
@@ -94,8 +134,14 @@ class App extends Component {
         <Order
           fishes={this.state.fishes}
           order={this.state.order}
-          params={this.props.params}/>
-        <Inventory addFish={this.addFish} loadSamples={this.loadSamples}/>
+          params={this.props.params}
+          removeFromOrder={this.removeFromOrder}/>
+        <Inventory
+          fishes={this.state.fishes}
+          addFish={this.addFish}
+          removeFish={this.removeFish}
+          loadSamples={this.loadSamples}
+          updateFish={this.updateFish}/>
       </div>
     );
   }

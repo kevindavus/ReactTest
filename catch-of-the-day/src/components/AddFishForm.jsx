@@ -24,8 +24,7 @@ class AddFishForm extends Component {
   render() {
     return (
       <form
-        ref=
-        {(input) => this.fishForm = input}
+        ref={(input) => this.fishForm = input}
         className="fish-edit"
         onSubmit={(e) => this.createFish(e)}>
         <input type="text" ref={(input) => this.name = input} placeholder="Fish Name"/>
